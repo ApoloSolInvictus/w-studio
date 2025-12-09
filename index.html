@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W Studio | Academia de Diseño & IA</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Chat Widget */
+        .chat-container {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .chat-container.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-2">
+                    <div class="bg-indigo-600 text-white p-2 rounded-lg font-bold text-xl">W</div>
+                    <span class="text-2xl font-bold tracking-tighter">STUDIO</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#cursos" class="text-gray-600 hover:text-indigo-600 font-medium">Cursos</a>
+                    <a href="#metodologia" class="text-gray-600 hover:text-indigo-600 font-medium">Metodología</a>
+                    <a href="#precios" class="text-gray-600 hover:text-indigo-600 font-medium">Precios</a>
+                </div>
+                <a href="https://wa.me/50600000000" target="_blank" class="bg-indigo-600 text-white px-5 py-2 rounded-full font-bold hover:bg-indigo-700 transition flex items-center gap-2">
+                    <i data-lucide="calendar"></i> Agendar
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="inline-block px-4 py-1 bg-indigo-50 text-indigo-600 rounded-full text-sm font-semibold mb-6">
+                    🎓 Aprende desde Casa - Google Meet
+                </div>
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+                    Domina el <span class="gradient-text">Diseño & la IA</span><br>con un Experto.
+                </h1>
+                <p class="text-xl text-gray-500 mb-10">
+                    Clases particulares y grupales. Aprende a usar Canva como un pro, los fundamentos del Diseño Gráfico y cómo potenciar tu creatividad con Inteligencia Artificial (Gemini).
+                </p>
+                <div class="flex justify-center gap-4">
+                    <a href="#cursos" class="bg-gray-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-black transition shadow-lg">
+                        Ver Cursos
+                    </a>
+                    <button onclick="toggleChat()" class="bg-white border border-gray-200 text-gray-700 px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition shadow-sm flex items-center gap-2">
+                        <i data-lucide="message-circle"></i> Preguntar a Maximus
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cursos Grid -->
+    <section id="cursos" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Tu Ruta de Aprendizaje</h2>
+                <p class="text-gray-500">Selecciona la habilidad que quieres desbloquear hoy.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Curso 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover transition duration-300">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 text-blue-600">
+                        <i data-lucide="layout" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Master en Canva</h3>
+                    <p class="text-gray-500 mb-6 text-sm">Deja de usar plantillas aburridas. Aprende a crear contenido de alto impacto para redes sociales, presentaciones y marca personal.</p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Brand Kits</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Animación Básica</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Diseño para RRSS</li>
+                    </ul>
+                </div>
+
+                <!-- Curso 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover transition duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6 text-purple-600">
+                        <i data-lucide="pen-tool" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Diseño Gráfico Pro</h3>
+                    <p class="text-gray-500 mb-6 text-sm">Entiende los fundamentos: Teoría del color, tipografía, composición y jerarquía visual. Haz que tus ideas se vean profesionales.</p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Psicología del Color</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Composición Áurea</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Identidad Visual</li>
+                    </ul>
+                </div>
+
+                <!-- Curso 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 card-hover transition duration-300">
+                    <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mb-6 text-pink-600">
+                        <i data-lucide="bot" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Diseño Web con IA</h3>
+                    <p class="text-gray-500 mb-6 text-sm">Aprende a usar Google Gemini y herramientas de IA para generar código, copy y estructuras web en minutos. El futuro es hoy.</p>
+                    <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Prompt Engineering</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Generación de Código</li>
+                        <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Optimización SEO</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing & Payment -->
+    <section id="precios" class="py-24 bg-gray-900 text-white relative overflow-hidden">
+        <!-- Decoración -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-indigo-600/20 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-pink-600/20 rounded-full blur-[100px]"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Inversión Simple y Clara</h2>
+            <p class="text-gray-400 mb-12">Sin contratos. Pagas por clase y agendas según tu disponibilidad.</p>
+
+            <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-white/10">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-8">
+                    <div class="text-5xl font-black">₡10,000</div>
+                    <div class="text-xl text-gray-300">/ hora</div>
+                </div>
+                
+                <p class="text-gray-300 mb-8">Incluye grabación de la clase en Google Meet y material de apoyo PDF.</p>
+
+                <!-- Payment Methods -->
+                <div class="grid md:grid-cols-2 gap-6 max-w-lg mx-auto">
+                    <!-- SINPE -->
+                    <div class="bg-white text-gray-900 p-6 rounded-xl hover:bg-gray-100 transition cursor-pointer group">
+                        <div class="flex justify-center mb-3">
+                            <span class="font-bold text-red-600 text-xl">SINPE</span>
+                            <span class="font-bold text-gray-800 text-xl ml-1">Móvil</span>
+                        </div>
+                        <p class="text-sm font-bold text-gray-600 mb-2">Costa Rica</p>
+                        <p class="text-lg font-mono font-bold tracking-wider">8888-8888</p>
+                        <p class="text-xs text-gray-500 mt-2 group-hover:text-indigo-600">Enviar comprobante al WhatsApp</p>
+                    </div>
+
+                    <!-- PayPal -->
+                    <div class="bg-[#003087] text-white p-6 rounded-xl hover:bg-[#00256b] transition cursor-pointer">
+                        <div class="flex justify-center mb-4">
+                            <i data-lucide="credit-card" class="w-6 h-6 mr-2"></i>
+                            <span class="font-bold text-xl">PayPal</span>
+                        </div>
+                        <p class="text-sm text-blue-200 mb-3">Internacional ($20 USD)</p>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="TU_ID_PAYPAL">
+                            <button type="submit" class="bg-white text-blue-900 px-6 py-2 rounded-full font-bold text-sm hover:bg-gray-100 w-full">
+                                Pagar Ahora
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                <a href="https://wa.me/50600000000?text=Hola,%20ya%20realicé%20el%20pago,%20quiero%20agendar%20mi%20clase." class="inline-flex items-center text-green-400 hover:text-green-300 font-bold text-lg">
+                    <i data-lucide="message-square" class="mr-2"></i>
+                    Confirmar Pago y Agendar en WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAXIMUS CHAT WIDGET -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="toggleChat()" class="relative w-14 h-14 bg-indigo-600 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition duration-300 group">
+            <span class="absolute top-0 right-0 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></span>
+            <i data-lucide="bot" class="w-7 h-7 text-white"></i>
+        </button>
+    </div>
+
+    <!-- Chat Window -->
+    <div id="chat-window" class="chat-container fixed bottom-24 right-6 w-[90vw] md:w-80 h-[450px] bg-white border border-gray-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden z-50">
+        
+        <div class="bg-indigo-600 p-4 flex justify-between items-center text-white">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <i data-lucide="cpu" class="w-4 h-4"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm">Maximus Académico</h4>
+                    <p class="text-[10px] opacity-80">Asistente W Studio</p>
+                </div>
+            </div>
+            <button onclick="toggleChat()" class="hover:text-gray-200"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+
+        <div id="chat-history" class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50">
+            <div class="flex gap-2">
+                <div class="bg-white p-3 rounded-r-xl rounded-bl-xl text-sm text-gray-700 shadow-sm border border-gray-100">
+                    ¡Hola! Soy Maximus. Puedo ayudarte con el temario de las clases, precios o métodos de pago. ¿Qué te gustaría aprender hoy? 🎨
+                </div>
+            </div>
+        </div>
+
+        <div class="p-3 bg-white border-t border-gray-100">
+            <form id="chat-form" class="flex gap-2" onsubmit="handleChatSubmit(event)">
+                <input type="text" id="user-input" placeholder="Escribe tu duda..." class="flex-1 bg-gray-100 border-0 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-500">
+                <button type="submit" class="bg-indigo-600 text-white p-2 rounded-lg hover:bg-indigo-700">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="bg-gray-50 py-8 text-center text-gray-400 text-xs">
+        <p>&copy; 2025 W Studio Academy. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const chatWindow = document.getElementById('chat-window');
+        const chatHistory = document.getElementById('chat-history');
+        const userInput = document.getElementById('user-input');
+        let isChatOpen = false;
+
+        function toggleChat() {
+            isChatOpen = !isChatOpen;
+            if (isChatOpen) {
+                chatWindow.classList.add('active');
+                userInput.focus();
+            } else {
+                chatWindow.classList.remove('active');
+            }
+        }
+
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            // User msg
+            chatHistory.innerHTML += `
+                <div class="flex gap-2 justify-end animate-fade-in">
+                    <div class="bg-indigo-600 text-white p-3 rounded-l-xl rounded-br-xl text-sm shadow-sm">
+                        ${text}
+                    </div>
+                </div>`;
+            userInput.value = '';
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+
+            // AI Response (Simulada para demo)
+            setTimeout(() => {
+                const response = getAIResponse(text);
+                chatHistory.innerHTML += `
+                    <div class="flex gap-2 animate-fade-in">
+                        <div class="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0 mt-1">
+                            <i data-lucide="cpu" class="w-3 h-3 text-indigo-600"></i>
+                        </div>
+                        <div class="bg-white p-3 rounded-r-xl rounded-bl-xl text-sm text-gray-700 shadow-sm border border-gray-100">
+                            ${response}
+                        </div>
+                    </div>`;
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+                lucide.createIcons();
+            }, 600);
+        }
+
+        function getAIResponse(input) {
+            input = input.toLowerCase();
+            if (input.includes('precio') || input.includes('costo') || input.includes('vale')) {
+                return "La inversión es de ₡10,000 colones (aprox $20 USD) por hora de clase personalizada. Incluye material digital.";
+            } else if (input.includes('sinpe') || input.includes('pago')) {
+                return "Aceptamos SINPE Móvil al 8888-8888 (Costa Rica) y PayPal para pagos internacionales. Una vez pagado, agendas tu hora.";
+            } else if (input.includes('horario') || input.includes('agenda') || input.includes('cuando')) {
+                return "Las clases son por agendamiento. Tú eliges el horario que mejor te convenga y nos conectamos por Google Meet.";
+            } else if (input.includes('canva') || input.includes('diseño') || input.includes('ia')) {
+                return "Enseñamos desde cero hasta avanzado. Canva para redes, Fundamentos de Diseño Gráfico, y cómo usar Gemini para crear webs y contenido.";
+            } else {
+                return "¡Excelente pregunta! Soy Maximus, tu asistente. ¿Te gustaría agendar una clase de prueba o saber más sobre el temario?";
+            }
+        }
+    </script>
+</body>
+</html>
