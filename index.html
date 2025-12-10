@@ -103,20 +103,20 @@
                     
                     <div class="w-full flex-shrink-0 h-full">
                         <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                            <source src="videos/video1.mp4" type="video/mp4">
+                            <source src="videos/1.mp4" type="video/mp4">
                             Tu navegador no soporta videos HTML5.
                         </video>
                     </div>
 
                     <div class="w-full flex-shrink-0 h-full">
                         <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                            <source src="videos/video2.mp4" type="video/mp4">
+                            <source src="videos/2.mp4" type="video/mp4">
                         </video>
                     </div>
 
                     <div class="w-full flex-shrink-0 h-full">
                         <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                            <source src="videos/video3.mp4" type="video/mp4">
+                            <source src="videos/3.mp4" type="video/mp4">
                         </video>
                     </div>
 
@@ -363,7 +363,56 @@
                 return "¡Excelente pregunta! Soy Maximus, tu asistente. ¿Te gustaría agendar una clase de prueba o saber más sobre el temario?";
             }
         }
+
+        // --- Lógica del Slider de Videos ---
+        const track = document.getElementById('slider-track');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+        const totalSlides = 3; // Ajustar si agregas más videos
+
+        // Función para actualizar la posición
+        function updateSlider() {
+            const width = track.clientWidth; // Obtiene el ancho actual
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Actualizar puntos
+            dots.forEach((dot, index) => {
+                if(index === currentSlide) {
+                    dot.classList.remove('bg-white/50');
+                    dot.classList.add('bg-white');
+                } else {
+                    dot.classList.add('bg-white/50');
+                    dot.classList.remove('bg-white');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Auto-play (cambia cada 5 segundos)
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        // Pausar auto-play al interactuar (opcional, para mejor experiencia)
+        track.parentElement.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        track.parentElement.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 5000));
+
+        // Inicializar estado de los puntos
+        updateSlider();
     </script>
 </body>
 
 </html>
+
